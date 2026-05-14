@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('H/5 * * * *') // check GitHub every 5 mins
+    }
+
+    stages {
+
+        stage('Stage 1: Build') {
+            steps {
+                echo "Building application using Maven..."
+            }
+        }
+
+        stage('Stage 2: Unit and Integration Tests') {
+            steps {
+                echo "Running Unit Tests (JUnit)..."
+                echo "Running Integration Tests (TestNG)..."
+            }
+        }
+
+        stage('Stage 3: Code Analysis') {
+            steps {
+                echo "Analyzing code using SonarQube..."
+            }
+        }
+
+        stage('Stage 4: Security Scan') {
+            steps {
+                echo "Performing security scan using OWASP Dependency-Check..."
+            }
+        }
+
+        stage('Stage 5: Deploy to Staging') {
+            steps {
+                echo "Deploying application to AWS EC2 staging server..."
+            }
+        }
+
+        stage('Stage 6: Integration Tests on Staging') {
+            steps {
+                echo "Running integration tests on staging using Selenium/Postman..."
+            }
+        }
+
+        stage('Stage 7: Deploy to Production') {
+            steps {
+                echo "Deploying application to AWS EC2 production server..."
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+    }
+}
