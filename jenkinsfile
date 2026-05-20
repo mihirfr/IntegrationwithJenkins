@@ -49,13 +49,13 @@ pipeline {
                 echo "Deploying application to AWS EC2 production server..."
             }
         }
-    }
-        stage('Stage 8: Pipeline Complete) {
+        stage('Stage 8: Pipeline Complete') {
             steps {
                 echo "Pipeleine complete..."
             }
         }
     }
+        
 
     post {
         success {
