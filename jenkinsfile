@@ -50,6 +50,12 @@ pipeline {
             }
         }
     }
+        stage('Stage 8: Pipeline Complete) {
+            steps {
+                echo "Pipeleine complete..."
+            }
+        }
+    }
 
     post {
         success {
